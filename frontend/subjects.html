@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Subjects – Tadrees</title>
+  <meta name="description" content="Manage academic subjects in Tadrees Education Center"/>
+  <link rel="stylesheet" href="css/style.css?v=2"/>
+</head>
+<body>
+<div class="app-shell">
+  <button class="hamburger" id="hamburger" aria-label="Open menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
+  <div class="sidebar-overlay" id="sidebar-overlay"></div>
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-logo"><img src="wallpapers/CENTER_LOGO.png" alt="Logo" onerror="this.style.display='none'"/><div><span class="sidebar-logo-text">Tadrees</span><span class="sidebar-logo-sub">Management</span></div></div>
+    <nav class="sidebar-nav">
+      <div class="nav-section"><div class="nav-section-label">Main</div><a href="index.html" class="nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>Home</a><a href="center.html" class="nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>About Center</a></div>
+      <div class="nav-section"><div class="nav-section-label">People</div><a href="teachers.html" class="nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>Teachers</a><a href="students.html" class="nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>Students</a></div>
+      <div class="nav-section"><div class="nav-section-label">Academics</div><a href="subjects.html" class="nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg>Subjects</a><a href="subject-teachers.html" class="nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>Subject Teachers</a><a href="schedule.html" class="nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>Schedule</a><a href="special-schedule.html" class="nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>Special Sessions</a></div>
+      <div class="nav-section"><div class="nav-section-label">Finance</div><a href="products.html" class="nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>Payments</a></div>
+      <div class="nav-section nav-admin-only" style="display:none"><div class="nav-section-label">Admin</div><a href="admin-dashboard.html" class="nav-item nav-admin-only" style="display:none"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg>Dashboard</a><a href="add-staff.html" class="nav-item nav-admin-only" style="display:none"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 00-4-4H6a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><line x1="19" y1="8" x2="19" y2="14"/><line x1="22" y1="11" x2="16" y2="11"/></svg>Add Staff</a></div>
+    </nav>
+    <div class="sidebar-footer"><div class="sidebar-user"><div class="sidebar-user-avatar" id="sidebar-avatar">U</div><div><div class="sidebar-user-name" id="sidebar-username">Loading...</div><div class="sidebar-user-role" id="sidebar-role"></div></div></div><button class="btn-logout" id="btn-logout"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4M16 17l5-5-5-5M21 12H9"/></svg>Sign Out</button></div>
+  </aside>
+
+  <main class="main-content">
+    <div class="page-banner">
+      <img class="page-banner-img" id="banner-img" src="" alt=""/>
+      <div class="page-banner-content"><h1>Subjects</h1><p>Manage academic subjects, pricing, and teacher assignments</p></div>
+    </div>
+    <div class="page-body">
+      <div class="page-header">
+        <div class="search-bar" style="min-width:260px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg><input type="text" id="search-input" placeholder="Search subjects..."/></div>
+        <button class="btn btn-primary" id="btn-add-subject"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>Add Subject</button>
+      </div>
+      <div class="grid grid-auto" id="subjects-container">
+        <div class="loading-center"><div class="spinner"></div><span>Loading subjects...</span></div>
+      </div>
+    </div>
+  </main>
+</div>
+
+<!-- Subject Modal -->
+<div class="modal-backdrop" id="subject-modal">
+  <div class="modal">
+    <div class="modal-header"><h3 id="subject-modal-title">Add Subject</h3><button class="modal-close"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button></div>
+    <div class="modal-body">
+      <input type="hidden" id="edit-subject-id"/>
+      <div class="form-group"><label class="form-label">Subject Name <span>*</span></label><input class="form-control" id="sub-name" placeholder="e.g. Mathematics"/></div>
+      <div class="form-group"><label class="form-label">Description <span>*</span></label><textarea class="form-control" id="sub-desc" placeholder="Brief description of the subject..."></textarea></div>
+      <div class="form-group"><label class="form-label">Price (EGP)</label><input class="form-control" id="sub-price" type="number" step="0.01" placeholder="0.00"/></div>
+      <div class="form-group">
+        <label class="form-label">Assign Teachers</label>
+        <div id="teachers-checkboxes" style="display:grid;grid-template-columns:1fr 1fr;gap:8px;max-height:180px;overflow-y:auto;padding:10px;background:var(--bg);border-radius:var(--radius-sm);border:1px solid var(--border)">
+          <div class="loading-center" style="padding:20px"><div class="spinner spinner-sm"></div></div>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer"><button class="btn btn-secondary modal-close">Cancel</button><button class="btn btn-primary" id="btn-save-subject">Save Subject</button></div>
+  </div>
+</div>
+
+<script src="js/config.js"></script>
+<script src="js/utils.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/api.js"></script>
+<script src="js/router.js?v=2"></script>
+<script>
+(function(){const img=document.getElementById('banner-img');const exts=['jpg','jpeg','png','webp'];let i=0;img.onerror=()=>{if(++i<exts.length)img.src=`wallpapers/subjects.${exts[i]}`;};img.src=`wallpapers/subjects.${exts[0]}`;})();
+
+let allSubjects = [];
+let allTeachers = [];
+let editingId = null;
+
+async function loadAll() {
+  const container = document.getElementById('subjects-container');
+  renderLoading(container);
+  try {
+    const [sRes, tRes] = await Promise.all([api.get('/api/academics/subjects/'), api.get('/api/users/teachers/')]);
+    if (sRes.networkError) throw new Error(sRes.message);
+    if (!sRes.ok) throw new Error(sRes.message || 'Failed to load subjects');
+    allSubjects = sRes.data;
+    allTeachers = tRes.ok ? tRes.data : [];
+    renderSubjects(allSubjects, container);
+  } catch (err) { renderError(container, err.message || 'Failed to load subjects.'); }
+}
+
+function renderSubjects(data, container) {
+  if (!data.length) { renderEmpty(container, 'No subjects yet.', `<button class="btn btn-primary" onclick="openModal('subject-modal')">Add First Subject</button>`); return; }
+  const colors = ['blue','violet','green','amber'];
+  container.innerHTML = data.map((s, i) => {
+    const clr = colors[i % colors.length];
+    const teacherIds = (s.teacher || []).map(t => (typeof t === 'object' ? t.id : t)).filter(id => Number.isInteger(id));
+    const teachers = allTeachers.filter(t => teacherIds.includes(t.id));
+    return `<div class="card fade-in-up delay-${(i % 4) + 1}">
+      <div class="card-header">
+        <div>
+          <div style="font-size:16px;font-weight:700">${s.name}</div>
+          <span class="badge badge-${clr}" style="margin-top:4px">EGP ${parseFloat(s.price||0).toFixed(2)}</span>
+        </div>
+        <div style="display:flex;gap:6px">
+          <button class="btn btn-secondary btn-sm btn-edit-sub" data-id="${s.id}">Edit</button>
+          <button class="btn btn-danger btn-sm btn-del-sub" data-id="${s.id}">Delete</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <p style="font-size:14px;color:var(--text-muted);margin-bottom:12px">${s.description||'No description.'}</p>
+        <div style="font-size:12px;font-weight:700;color:var(--text-muted);margin-bottom:6px">TEACHERS (${teachers.length})</div>
+        <div style="display:flex;flex-wrap:wrap;gap:4px">
+          ${teachers.length ? teachers.map(t=>`<span class="badge badge-gray">${t.name||t.phone||'?'}</span>`).join('') : '<span style="font-size:13px;color:var(--text-light)">No teachers assigned</span>'}
+        </div>
+      </div>
+    </div>`;
+  }).join('');
+  container.querySelectorAll('.btn-edit-sub').forEach(b => b.addEventListener('click', () => openEdit(parseInt(b.dataset.id))));
+  container.querySelectorAll('.btn-del-sub').forEach(b => b.addEventListener('click', () => deleteSub(parseInt(b.dataset.id))));
+}
+
+function renderTeacherCheckboxes(selectedIds = []) {
+  const box = document.getElementById('teachers-checkboxes');
+  if (!allTeachers.length) { box.innerHTML = '<span style="font-size:13px;color:var(--text-muted)">No teachers available</span>'; return; }
+  box.innerHTML = allTeachers.filter(t => Number.isInteger(t.id)).map(t => `
+    <label style="display:flex;align-items:center;gap:8px;font-size:13px;cursor:pointer;padding:4px">
+      <input type="checkbox" name="teacher" value="${t.id}" ${selectedIds.includes(t.id)?'checked':''} style="width:15px;height:15px;accent-color:var(--primary)"/>
+      ${t.name||t.phone||'?'}
+    </label>`).join('');
+}
+
+function openEdit(id) {
+  const s = allSubjects.find(x => x.id === id);
+  if (!s) return;
+  editingId = id;
+  document.getElementById('subject-modal-title').textContent = 'Edit Subject';
+  document.getElementById('sub-name').value  = s.name || '';
+  document.getElementById('sub-desc').value  = s.description || '';
+  document.getElementById('sub-price').value = s.price || 0;
+  const teacherIds = (s.teacher || []).map(t => (typeof t === 'object' ? t.id : t)).filter(id => Number.isInteger(id));
+  renderTeacherCheckboxes(teacherIds);
+  openModal('subject-modal');
+}
+
+async function deleteSub(id) {
+  if (!confirmAction('Delete this subject?')) return;
+  const { ok, message } = await api.delete(`/api/academics/subjects/${id}/`);
+  if (ok) { showToast('Subject deleted', 'success'); loadAll(); }
+  else showToast(message || 'Failed to delete', 'error');
+}
+
+document.getElementById('search-input').addEventListener('input', debounce(e => {
+  const q = e.target.value.toLowerCase();
+  renderSubjects(allSubjects.filter(s => s.name.toLowerCase().includes(q) || (s.description||'').toLowerCase().includes(q)), document.getElementById('subjects-container'));
+}));
+
+document.getElementById('btn-add-subject').addEventListener('click', () => {
+  editingId = null;
+  document.getElementById('subject-modal-title').textContent = 'Add Subject';
+  document.getElementById('sub-name').value = '';
+  document.getElementById('sub-desc').value = '';
+  document.getElementById('sub-price').value = '';
+  renderTeacherCheckboxes([]);
+  openModal('subject-modal');
+});
+
+document.getElementById('btn-save-subject').addEventListener('click', async () => {
+  const btn = document.getElementById('btn-save-subject');
+  const name = document.getElementById('sub-name').value.trim();
+  const desc = document.getElementById('sub-desc').value.trim();
+  if (!name || !desc) { showToast('Name and description are required', 'warning'); return; }
+  const selectedTeachers = [...document.querySelectorAll('input[name="teacher"]:checked')]
+    .map(c => parseInt(c.value, 10))
+    .filter(id => Number.isInteger(id));
+  const body = { name, description: desc, price: parseFloat(document.getElementById('sub-price').value||0), teacher: selectedTeachers };
+  setSubmitting(btn, true);
+  try {
+    const { ok, data, networkError, message } = editingId
+      ? await api.patch(`/api/academics/subjects/${editingId}/`, body)
+      : await api.post('/api/academics/subjects/', body);
+    if (networkError) showToast(message, 'error');
+    else if (!ok) showToast(message || formatApiError(data), 'error');
+    else { showToast(editingId ? 'Subject updated!' : 'Subject added!', 'success'); closeModal('subject-modal'); loadAll(); }
+  } catch (err) { showToast(err.message || 'Network error', 'error'); }
+  setSubmitting(btn, false);
+});
+
+loadAll();
+</script>
+<script src="js/navbar.js?v=1"></script>
+</body>
+</html>

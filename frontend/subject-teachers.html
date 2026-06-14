@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Subject Teachers – Tadrees</title>
+  <meta name="description" content="Manage teacher-subject assignments and schedules in Tadrees Center"/>
+  <link rel="stylesheet" href="css/style.css?v=2"/>
+  <style>
+    .split-layout {
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: 24px;
+    }
+    @media (max-width: 768px) {
+      .split-layout {
+        grid-template-columns: 1fr;
+      }
+    }
+    .teacher-item {
+      padding: 12px 16px;
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      transition: var(--transition);
+      border: 1px solid transparent;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 8px;
+    }
+    .teacher-item:hover {
+      background: var(--bg);
+    }
+    .teacher-item.active {
+      background: var(--primary-light);
+      border-color: var(--primary);
+      color: var(--primary);
+    }
+    .teacher-item.active .avatar {
+      background: var(--primary);
+      color: #fff;
+    }
+    .teacher-item-name {
+      font-weight: 600;
+      font-size: 14px;
+    }
+    .teacher-item-spec {
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+    .teacher-item.active .teacher-item-spec {
+      color: var(--primary);
+    }
+  </style>
+</head>
+<body>
+<div class="app-shell">
+  <button class="hamburger" id="hamburger" aria-label="Open menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
+  <div class="sidebar-overlay" id="sidebar-overlay"></div>
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-logo"><img src="wallpapers/CENTER_LOGO.png" alt="Logo" onerror="this.style.display='none'"/><div><span class="sidebar-logo-text">Tadrees</span><span class="sidebar-logo-sub">Management</span></div></div>
+    <nav class="sidebar-nav">
+      <div class="nav-section"><div class="nav-section-label">Main</div><a href="index.html" class="nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>Home</a><a href="center.html" class="nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>About Center</a></div>
+      <div class="nav-section"><div class="nav-section-label">People</div><a href="teachers.html" class="nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>Teachers</a><a href="students.html" class="nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>Students</a></div>
+      <div class="nav-section"><div class="nav-section-label">Academics</div><a href="subjects.html" class="nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg>Subjects</a><a href="subject-teachers.html" class="nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>Subject Teachers</a><a href="schedule.html" class="nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>Schedule</a><a href="special-schedule.html" class="nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>Special Sessions</a></div>
+      <div class="nav-section"><div class="nav-section-label">Finance</div><a href="products.html" class="nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>Payments</a></div>
+      <div class="nav-section nav-admin-only" style="display:none"><div class="nav-section-label">Admin</div><a href="admin-dashboard.html" class="nav-item nav-admin-only" style="display:none"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg>Dashboard</a><a href="add-staff.html" class="nav-item nav-admin-only" style="display:none"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 00-4-4H6a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><line x1="19" y1="8" x2="19" y2="14"/><line x1="22" y1="11" x2="16" y2="11"/></svg>Add Staff</a></div>
+    </nav>
+    <div class="sidebar-footer"><div class="sidebar-user"><div class="sidebar-user-avatar" id="sidebar-avatar">U</div><div><div class="sidebar-user-name" id="sidebar-username">Loading...</div><div class="sidebar-user-role" id="sidebar-role"></div></div></div><button class="btn-logout" id="btn-logout"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4M16 17l5-5-5-5M21 12H9"/></svg>Sign Out</button></div>
+  </aside>
+
+  <main class="main-content">
+    <div class="page-banner">
+      <img class="page-banner-img" id="banner-img" src="" alt=""/>
+      <div class="page-banner-content"><h1>Subject Teachers</h1><p>Analyze courses assigned to instructors and review weekly timetables</p></div>
+    </div>
+    <div class="page-body">
+      <div class="split-layout">
+        <!-- Sidebar: Teacher List -->
+        <div>
+          <div class="section-title">Instructors</div>
+          <div class="card">
+            <div class="card-body" style="padding: 12px;" id="teachers-list-container">
+              <div class="loading-center"><div class="spinner"></div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Main Display Pane -->
+        <div>
+          <div id="details-pane">
+            <div class="empty-state" style="padding: 80px 20px;">
+              <div class="empty-state-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+              </div>
+              <h3>No instructor selected</h3>
+              <p>Select a teacher from the list to view their assigned subjects and timetable.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+
+<script src="js/config.js"></script>
+<script src="js/utils.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/api.js"></script>
+<script src="js/router.js?v=2"></script>
+<script>
+(function(){const img=document.getElementById('banner-img');const exts=['jpg','jpeg','png','webp'];let i=0;img.onerror=()=>{if(++i<exts.length)img.src=`wallpapers/subject-teachers.${exts[i]}`;};img.src=`wallpapers/subject-teachers.${exts[0]}`;})();
+
+let teachers = [];
+
+async function loadAll() {
+  const container = document.getElementById('teachers-list-container');
+  try {
+    const { ok, data, networkError, message } = await api.get('/api/users/teachers/');
+    if (networkError) throw new Error(message);
+    if (ok) {
+      teachers = data;
+      renderTeachersList(container);
+    } else {
+      container.innerHTML = `<p style="font-size:13px;color:var(--text-muted);text-align:center;">${message || 'Failed to load teachers.'}</p>`;
+    }
+  } catch (err) {
+    container.innerHTML = `<p style="font-size:13px;color:var(--text-muted);text-align:center;">${err.message || 'Network error.'}</p>`;
+  }
+}
+
+function renderTeachersList(container) {
+  if (!teachers.length) {
+    container.innerHTML = `<p style="font-size:13px;color:var(--text-muted);text-align:center;">No instructors available.</p>`;
+    return;
+  }
+  container.innerHTML = teachers.map((t, i) => `
+    <div class="teacher-item fade-in-up delay-${(i % 4) + 1}" data-id="${t.id}">
+      <div class="avatar avatar-sm">${initials(t.name || t.email || '?')}</div>
+      <div>
+        <div class="teacher-item-name">${t.name || '—'}</div>
+        <div class="teacher-item-spec">${t.description || 'No specialty'}</div>
+      </div>
+    </div>
+  `).join('');
+
+  container.querySelectorAll('.teacher-item').forEach(item => {
+    item.addEventListener('click', () => {
+      container.querySelectorAll('.teacher-item').forEach(el => el.classList.remove('active'));
+      item.classList.add('active');
+      selectTeacher(parseInt(item.dataset.id));
+    });
+  });
+}
+
+async function selectTeacher(id) {
+  const teacher = teachers.find(t => t.id === id);
+  if (!teacher) return;
+
+  const pane = document.getElementById('details-pane');
+  renderLoading(pane);
+
+  let subjects = [];
+  let schedule = [];
+
+  try {
+    const [subRes, schRes] = await Promise.all([
+      api.get(`/api/academics/teachers/${id}/subject/`),
+      api.get(`/api/academics/teachers/${id}/schedule/`)
+    ]);
+    if (subRes.networkError || schRes.networkError) {
+      throw new Error(subRes.message || schRes.message);
+    }
+    if (subRes.ok) subjects = subRes.data || [];
+    if (schRes.ok) schedule = schRes.data || [];
+  } catch (err) {
+    showToast(err.message || 'Failed to load instructor schedule info', 'error');
+  }
+
+  let subjectsHtml = '';
+  if (!subjects.length) {
+    subjectsHtml = `<p style="color:var(--text-muted);font-size:13px;margin:0;">No assigned subjects.</p>`;
+  } else {
+    subjectsHtml = `
+      <div style="display:flex;flex-wrap:wrap;gap:8px;">
+        ${subjects.map(s => `
+          <div style="background:var(--bg);border:1px solid var(--border);padding:10px 14px;border-radius:var(--radius-sm);min-width:140px;">
+            <div style="font-weight:700;font-size:14px;">${s.name}</div>
+            <div style="color:var(--primary);font-size:12px;font-weight:600;margin-top:4px;">${s.price} EGP</div>
+          </div>
+        `).join('')}
+      </div>
+    `;
+  }
+
+  let scheduleHtml = '';
+  if (!schedule.length) {
+    scheduleHtml = `<div class="empty-state" style="padding:20px 10px;"><p style="font-size:13px;margin:0;">No sessions scheduled for this instructor.</p></div>`;
+  } else {
+    scheduleHtml = `
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Subject</th>
+              <th>Day</th>
+              <th>Time</th>
+              <th>Duration</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${schedule.map(s => `
+              <tr>
+                <td style="font-weight:600">${s.subject || '—'}</td>
+                <td><span class="badge badge-blue">${s.day || '—'}</span></td>
+                <td>${formatTime(s.time_start)}</td>
+                <td>${s.duration_in_minutes} min</td>
+              </tr>
+            `).join('')}
+          </tbody>
+        </table>
+      </div>
+    `;
+  }
+
+  pane.innerHTML = `
+    <div class="card" style="margin-bottom:24px;">
+      <div class="card-body" style="display:flex;align-items:center;gap:16px;">
+        <div class="avatar avatar-lg" style="font-size:24px;">${initials(teacher.name || '?')}</div>
+        <div>
+          <h2 style="margin:0;font-size:20px;font-weight:700;">${teacher.name || '—'}</h2>
+          <p style="margin:4px 0 0;font-size:13px;color:var(--text-muted);">${teacher.email || 'No Email'} · ${teacher.phone || 'No Phone'}</p>
+          <div style="margin-top:8px;"><span class="badge badge-green">${teacher.description || 'General'}</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-title">Assigned Subjects</div>
+    <div style="margin-bottom:24px;">
+      ${subjectsHtml}
+    </div>
+
+    <div class="section-title">Timetable</div>
+    <div class="card">
+      <div class="card-body" style="padding:0;">
+        ${scheduleHtml}
+      </div>
+    </div>
+  `;
+}
+
+loadAll();
+</script>
+<script src="js/navbar.js?v=1"></script>
+</body>
+</html>

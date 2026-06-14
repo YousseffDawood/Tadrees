@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Add Staff – Tadrees</title>
+  <meta name="description" content="Register center staff and system handlers"/>
+  <link rel="stylesheet" href="css/style.css?v=2"/>
+</head>
+<body data-requires-admin="true">
+<div class="app-shell">
+  <button class="hamburger" id="hamburger" aria-label="Open menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
+  <div class="sidebar-overlay" id="sidebar-overlay"></div>
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-logo"><img src="wallpapers/CENTER_LOGO.png" alt="Logo" onerror="this.style.display='none'"/><div><span class="sidebar-logo-text">Tadrees</span><span class="sidebar-logo-sub">Management</span></div></div>
+    <nav class="sidebar-nav">
+      <div class="nav-section"><div class="nav-section-label">Main</div><a href="index.html" class="nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>Home</a><a href="center.html" class="nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>About Center</a></div>
+      <div class="nav-section"><div class="nav-section-label">People</div><a href="teachers.html" class="nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>Teachers</a><a href="students.html" class="nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>Students</a></div>
+      <div class="nav-section"><div class="nav-section-label">Academics</div><a href="subjects.html" class="nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg>Subjects</a><a href="subject-teachers.html" class="nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>Subject Teachers</a><a href="schedule.html" class="nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>Schedule</a><a href="special-schedule.html" class="nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>Special Sessions</a></div>
+      <div class="nav-section"><div class="nav-section-label">Finance</div><a href="products.html" class="nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>Payments</a></div>
+      <div class="nav-section nav-admin-only" style="display:none"><div class="nav-section-label">Admin</div><a href="admin-dashboard.html" class="nav-item nav-admin-only" style="display:none"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg>Dashboard</a><a href="add-staff.html" class="nav-item nav-admin-only" style="display:none"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 00-4-4H6a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><line x1="19" y1="8" x2="19" y2="14"/><line x1="22" y1="11" x2="16" y2="11"/></svg>Add Staff</a></div>
+    </nav>
+    <div class="sidebar-footer"><div class="sidebar-user"><div class="sidebar-user-avatar" id="sidebar-avatar">U</div><div><div class="sidebar-user-name" id="sidebar-username">Loading...</div><div class="sidebar-user-role" id="sidebar-role"></div></div></div><button class="btn-logout" id="btn-logout"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4M16 17l5-5-5-5M21 12H9"/></svg>Sign Out</button></div>
+  </aside>
+
+  <main class="main-content">
+    <div class="page-banner">
+      <img class="page-banner-img" id="banner-img" src="" alt=""/>
+      <div class="page-banner-content"><h1>Add Staff</h1><p>Create new system users, receptionists, and managers</p></div>
+    </div>
+    <div class="page-body" style="max-width: 800px; margin: 0 auto;">
+      <div class="card">
+        <div class="card-body" style="padding: 30px;">
+          <h3 style="margin-top:0;margin-bottom:20px;" class="fade-in-up delay-1">Staff Registration Form</h3>
+          <div class="form-row fade-in-up delay-2">
+            <div class="form-group">
+              <label class="form-label">Username <span>*</span></label>
+              <input class="form-control" type="text" id="staff-username" placeholder="e.g. ahmed_ali"/>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Email <span>*</span></label>
+              <input class="form-control" type="email" id="staff-email" placeholder="e.g. ahmed@tadrees.com"/>
+            </div>
+          </div>
+          <div class="form-row fade-in-up delay-3">
+            <div class="form-group">
+              <label class="form-label">Phone Number <span>*</span></label>
+              <input class="form-control" type="text" id="staff-phone" placeholder="e.g. 010xxxxxxxx"/>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Role Title <span>*</span></label>
+              <input class="form-control" type="text" id="staff-role" placeholder="e.g. Receptionist, Manager"/>
+            </div>
+          </div>
+          <div class="form-row fade-in-up delay-3">
+            <div class="form-group">
+              <label class="form-label">Department <span>*</span></label>
+              <input class="form-control" type="text" id="staff-dept" placeholder="e.g. Customer Service, Administration"/>
+            </div>
+          </div>
+          <div class="form-row fade-in-up delay-4">
+            <div class="form-group">
+              <label class="form-label">Password <span>*</span></label>
+              <input class="form-control" type="password" id="staff-pass" placeholder="••••••••"/>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Confirm Password <span>*</span></label>
+              <input class="form-control" type="password" id="staff-conf" placeholder="••••••••"/>
+            </div>
+          </div>
+          <div class="fade-in-up delay-4" style="margin-top:24px;text-align:right;">
+            <button class="btn btn-primary" id="btn-submit-staff" style="padding:10px 24px;">Register Staff</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+
+<script src="js/config.js"></script>
+<script src="js/utils.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/api.js"></script>
+<script src="js/router.js?v=2"></script>
+<script>
+(function(){const img=document.getElementById('banner-img');const exts=['jpg','jpeg','png','webp'];let i=0;img.onerror=()=>{if(++i<exts.length)img.src=`wallpapers/add-staff.${exts[i]}`;};img.src=`wallpapers/add-staff.${exts[0]}`;})();
+
+document.getElementById('btn-submit-staff').addEventListener('click', async () => {
+  const btn = document.getElementById('btn-submit-staff');
+  const username = document.getElementById('staff-username').value.trim();
+  const email = document.getElementById('staff-email').value.trim();
+  const phone = document.getElementById('staff-phone').value.trim();
+  const roleTitle = document.getElementById('staff-role').value.trim();
+  const department = document.getElementById('staff-dept').value.trim();
+  const password = document.getElementById('staff-pass').value;
+  const confirmPassword = document.getElementById('staff-conf').value;
+
+  if (!username || !email || !phone || !roleTitle || !department || !password || !confirmPassword) {
+    showToast('All fields are required', 'warning');
+    return;
+  }
+
+  if (password !== confirmPassword) {
+    showToast('Passwords do not match', 'warning');
+    return;
+  }
+
+  const payload = {
+    username,
+    email,
+    name: username,
+    phone,
+    password,
+    confirm_password: confirmPassword
+  };
+
+  setSubmitting(btn, true);
+  try {
+    const { ok, data, networkError, message } = await api.post('/api/users/staff/', payload);
+    if (networkError) showToast(message, 'error');
+    else if (!ok) showToast(message || formatApiError(data), 'error');
+    else {
+      showToast('Staff member registered successfully!', 'success');
+      document.getElementById('staff-username').value = '';
+      document.getElementById('staff-email').value = '';
+      document.getElementById('staff-phone').value = '';
+      document.getElementById('staff-role').value = '';
+      document.getElementById('staff-dept').value = '';
+      document.getElementById('staff-pass').value = '';
+      document.getElementById('staff-conf').value = '';
+    }
+  } catch (err) { showToast(err.message || 'Network error occurred', 'error'); }
+  setSubmitting(btn, false);
+});
+</script>
+<script src="js/navbar.js?v=1"></script>
+</body>
+</html>

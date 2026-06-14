@@ -1,0 +1,20 @@
+TADREES FRONTEND CUSTOMIZATION FIELDS
+
+The following fields contain placeholder or static content that should be configured with real data before production deployment:
+
+1. Center Logo Image:
+   - File: `frontend/components/_navbar.html` (line 13)
+   - File: All HTML files containing `<aside class="sidebar">` (typically line 15 or 28 depending on layout)
+   - Action: Replace the path "../wallpapers/CENTER_LOGO.png" or ensure CENTER_LOGO.png is placed in the wallpapers/ folder.
+
+2. API Base URL:
+   - File: `frontend/js/config.js` (line 5)
+   - Action: Change 'http://127.0.0.1:8000' to your production backend API domain (e.g. 'https://api.tadrees.com').
+
+3. Default Wallpaper/Banner Images:
+   - File: Banners are dynamically resolved using image fallbacks in each HTML file (e.g., `teachers.jpg`, `schedule.png`, etc.)
+   - Action: Ensure your wallpapers directory exists with valid image assets.
+
+4. Page Descriptions & Meta Tags:
+   - File: `<meta name="description" content="...">` on all HTML pages
+   - Action: Update the descriptions for search engine optimization.

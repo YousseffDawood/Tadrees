@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Payments & Products – Tadrees</title>
+  <meta name="description" content="Manage products and record payments in Tadrees Education Center"/>
+  <link rel="stylesheet" href="css/style.css?v=2"/>
+  <style>
+    .finance-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 24px;
+    }
+    @media (max-width: 992px) {
+      .finance-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="app-shell">
+  <button class="hamburger" id="hamburger" aria-label="Open menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
+  <div class="sidebar-overlay" id="sidebar-overlay"></div>
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-logo"><img src="wallpapers/CENTER_LOGO.png" alt="Logo" onerror="this.style.display='none'"/><div><span class="sidebar-logo-text">Tadrees</span><span class="sidebar-logo-sub">Management</span></div></div>
+    <nav class="sidebar-nav">
+      <div class="nav-section"><div class="nav-section-label">Main</div><a href="index.html" class="nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>Home</a><a href="center.html" class="nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>About Center</a></div>
+      <div class="nav-section"><div class="nav-section-label">People</div><a href="teachers.html" class="nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>Teachers</a><a href="students.html" class="nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>Students</a></div>
+      <div class="nav-section"><div class="nav-section-label">Academics</div><a href="subjects.html" class="nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg>Subjects</a><a href="subject-teachers.html" class="nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>Subject Teachers</a><a href="schedule.html" class="nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>Schedule</a><a href="special-schedule.html" class="nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>Special Sessions</a></div>
+      <div class="nav-section"><div class="nav-section-label">Finance</div><a href="products.html" class="nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>Payments</a></div>
+      <div class="nav-section nav-admin-only" style="display:none"><div class="nav-section-label">Admin</div><a href="admin-dashboard.html" class="nav-item nav-admin-only" style="display:none"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg>Dashboard</a><a href="add-staff.html" class="nav-item nav-admin-only" style="display:none"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 00-4-4H6a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><line x1="19" y1="8" x2="19" y2="14"/><line x1="22" y1="11" x2="16" y2="11"/></svg>Add Staff</a></div>
+    </nav>
+    <div class="sidebar-footer"><div class="sidebar-user"><div class="sidebar-user-avatar" id="sidebar-avatar">U</div><div><div class="sidebar-user-name" id="sidebar-username">Loading...</div><div class="sidebar-user-role" id="sidebar-role"></div></div></div><button class="btn-logout" id="btn-logout"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4M16 17l5-5-5-5M21 12H9"/></svg>Sign Out</button></div>
+  </aside>
+
+  <main class="main-content">
+    <div class="page-banner fade-in-up">
+      <img class="page-banner-img" id="banner-img" src="" alt=""/>
+      <div class="page-banner-content"><h1>Finance & Payments</h1><p>Record sales, track invoices, and manage center inventory products</p></div>
+    </div>
+    <div class="page-body">
+      <div class="finance-grid">
+        <!-- Left Panel: Payments List -->
+        <div class="fade-in-up delay-1">
+          <div class="page-header" style="margin-bottom:16px;">
+            <div class="section-title" style="margin:0">Payments Log</div>
+          </div>
+          <div class="card">
+            <div class="card-body" style="padding:0">
+              <div class="table-wrap">
+                <table>
+                  <thead>
+                    <tr>
+                      <th>ID</th>
+                      <th>Student</th>
+                      <th>Item</th>
+                      <th>Amount</th>
+                      <th>Date</th>
+                      <th>Handled By</th>
+                      <th>Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody id="payments-tbody">
+                    <tr>
+                      <td colspan="7">
+                        <div class="loading-center"><div class="spinner"></div><span>Loading payments...</span></div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Panel: Sessions & Products Catalog -->
+        <div class="fade-in-up delay-2">
+          <div class="page-header" style="margin-bottom:16px;">
+            <div class="section-title" style="margin:0">Catalog</div>
+            <button class="btn btn-secondary btn-sm" id="btn-add-product">Add Material</button>
+          </div>
+
+          <div style="margin-bottom:20px;">
+            <h4 style="margin:0 0 10px;font-size:13px;text-transform:uppercase;letter-spacing:.5px;color:var(--text-light);">Upcoming Sessions</h4>
+            <div id="sessions-catalog">
+              <div class="loading-center"><div class="spinner"></div><span>Loading sessions...</span></div>
+            </div>
+          </div>
+
+          <div>
+            <h4 style="margin:0 0 10px;font-size:13px;text-transform:uppercase;letter-spacing:.5px;color:var(--text-light);">Materials</h4>
+            <div id="materials-catalog">
+              <div class="loading-center"><div class="spinner"></div><span>Loading materials...</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+
+<!-- Record Payment Modal -->
+<div class="modal-backdrop" id="payment-modal">
+  <div class="modal">
+    <div class="modal-header"><h3>Record Payment</h3><button class="modal-close"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button></div>
+    <div class="modal-body">
+      <div id="pay-item-info" style="margin-bottom:16px; padding:12px 14px; background:var(--primary-light); border-radius:var(--radius-sm); font-size:14px; font-weight:600; color:var(--primary); display:none;"></div>
+      <div class="form-group">
+        <label class="form-label">Student Phone <span>*</span></label>
+        <input class="form-control" type="text" id="pay-student-phone" placeholder="e.g. 01012345678"/>
+        <p class="form-hint">Enter the student's phone number to link this payment.</p>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Amount (EGP) <span>*</span></label>
+        <input class="form-control" type="number" id="pay-amount" placeholder="Auto-filled" step="0.01"/>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Handled By</label>
+        <input class="form-control" type="text" id="pay-handled-by" readonly style="background:var(--bg-muted);color:var(--text-muted);"/>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Note</label>
+        <textarea class="form-control" id="pay-note" placeholder="Optional note about this payment"></textarea>
+      </div>
+    </div>
+    <div class="modal-footer"><button class="btn btn-secondary modal-close">Cancel</button><button class="btn btn-primary" id="btn-save-payment">Record Payment</button></div>
+  </div>
+</div>
+
+<!-- Add Product Modal -->
+<div class="modal-backdrop" id="product-modal">
+  <div class="modal">
+    <div class="modal-header"><h3>Add Product/Item</h3><button class="modal-close"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button></div>
+    <div class="modal-body">
+      <div class="form-group">
+        <label class="form-label">Product Name <span>*</span></label>
+        <input class="form-control" id="prod-name" placeholder="e.g. Science Book Term 1"/>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">Price (EGP) <span>*</span></label>
+          <input class="form-control" type="number" id="prod-price" placeholder="e.g. 80"/>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Type <span>*</span></label>
+          <select class="form-control" id="prod-type">
+            <option value="BOOK">Book</option>
+            <option value="MATERIAL">Material</option>
+            <option value="FOOD">Food</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Description</label>
+        <textarea class="form-control" id="prod-desc" placeholder="Describe the item..."></textarea>
+      </div>
+    </div>
+    <div class="modal-footer"><button class="btn btn-secondary modal-close">Cancel</button><button class="btn btn-primary" id="btn-save-product">Create Product</button></div>
+  </div>
+</div>
+
+<script src="js/config.js"></script>
+<script src="js/utils.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/api.js"></script>
+<script src="js/router.js?v=2"></script>
+<script>
+(function(){const img=document.getElementById('banner-img');const exts=['jpg','jpeg','png','webp'];let i=0;img.onerror=()=>{if(++i<exts.length)img.src=`wallpapers/products.${exts[i]}`;};img.src=`wallpapers/products.${exts[0]}`;})();
+
+let allProducts = [], allPayments = [], allSessions = [];
+
+/** Currently selected item for payment: { type: 'session'|'product', id, name, price } */
+let selectedPaymentItem = null;
+
+async function loadAll() {
+  try {
+    const [prodR, payR, sessR] = await Promise.all([
+      api.get('/api/finance/products/'),
+      api.get('/api/finance/payments/'),
+      api.get('/api/attendance/sessions/upcoming/'),
+    ]);
+    const failed = [prodR, payR, sessR].find(r => r.networkError);
+    if (failed) throw new Error(failed.message);
+    allProducts = prodR.ok ? prodR.data : [];
+    allPayments = payR.ok ? payR.data : [];
+    allSessions = sessR.ok ? sessR.data : [];
+
+    renderPayments();
+    renderCatalog();
+  } catch (err) { showToast(err.message || 'Failed to load financial records', 'error'); }
+}
+
+function renderCatalog() {
+  renderSessionsCatalog();
+  renderMaterialsCatalog();
+}
+
+function renderSessionsCatalog() {
+  const container = document.getElementById('sessions-catalog');
+  if (!allSessions.length) {
+    container.innerHTML = `<div class="empty-state" style="padding:16px;"><p>No upcoming sessions this week.</p></div>`;
+    return;
+  }
+  container.innerHTML = allSessions.map(s => `
+    <div class="card" style="margin-bottom:10px;">
+      <div class="card-body" style="padding:12px 16px; display:flex; justify-content:space-between; align-items:center;">
+        <div>
+          <h4 style="margin:0;font-size:14px;font-weight:700;">${s.subject_name} - ${s.teacher_name}</h4>
+          <p style="margin:4px 0 0;font-size:12px;color:var(--text-muted);">
+            ${formatDate(s.session_date)} · ${formatTime(s.time_start)} - ${formatTime(s.time_end)} · ${s.room_name || 'N/A'}
+          </p>
+        </div>
+        <div style="text-align:right;">
+          <div style="font-weight:700;color:var(--primary);font-size:15px">${s.price} EGP</div>
+          <button class="btn btn-success btn-sm btn-pay-session" data-id="${s.id}" data-name="${s.subject_name} - ${s.teacher_name}" data-price="${s.price}" style="padding:2px 10px;font-size:11px;margin-top:6px;">Pay</button>
+        </div>
+      </div>
+    </div>
+  `).join('');
+  container.querySelectorAll('.btn-pay-session').forEach(b => {
+    b.addEventListener('click', () => {
+      selectedPaymentItem = {
+        type: 'session',
+        id: parseInt(b.dataset.id),
+        name: b.dataset.name,
+        price: parseFloat(b.dataset.price),
+      };
+      openPaymentModal();
+    });
+  });
+}
+
+function renderMaterialsCatalog() {
+  const container = document.getElementById('materials-catalog');
+  if (!allProducts.length) {
+    container.innerHTML = `<div class="empty-state" style="padding:16px;"><p>No materials yet. Add one above.</p></div>`;
+    return;
+  }
+  container.innerHTML = allProducts.map(p => `
+    <div class="card" style="margin-bottom:10px;">
+      <div class="card-body" style="padding:12px 16px; display:flex; justify-content:space-between; align-items:center;">
+        <div>
+          <h4 style="margin:0;font-size:14px;font-weight:700;">${p.name}</h4>
+          <p style="margin:4px 0 0;font-size:12px;color:var(--text-muted);">${p.description || ''}</p>
+          <div style="margin-top:4px;"><span class="badge badge-gray" style="font-size:10px">${p.type}</span></div>
+        </div>
+        <div style="text-align:right;">
+          <div style="font-weight:700;color:var(--primary);font-size:15px">${p.price} EGP</div>
+          <button class="btn btn-success btn-sm btn-pay-product" data-id="${p.id}" data-name="${p.name}" data-price="${p.price}" style="padding:2px 10px;font-size:11px;margin-top:6px;">Buy</button>
+          <button class="btn btn-danger btn-sm btn-del-prod" data-id="${p.id}" style="padding:2px 6px;font-size:10px;">Delete</button>
+        </div>
+      </div>
+    </div>
+  `).join('');
+  container.querySelectorAll('.btn-pay-product').forEach(b => {
+    b.addEventListener('click', () => {
+      selectedPaymentItem = {
+        type: 'product',
+        id: parseInt(b.dataset.id),
+        name: b.dataset.name,
+        price: parseFloat(b.dataset.price),
+      };
+      openPaymentModal();
+    });
+  });
+  container.querySelectorAll('.btn-del-prod').forEach(b => b.addEventListener('click', () => deleteProduct(parseInt(b.dataset.id))));
+}
+
+function openPaymentModal() {
+  if (!selectedPaymentItem) return;
+  const info = document.getElementById('pay-item-info');
+  info.innerHTML = `Paying for: <strong>${selectedPaymentItem.name}</strong> &mdash; ${selectedPaymentItem.price} EGP`;
+  info.style.display = 'block';
+
+  document.getElementById('pay-student-phone').value = '';
+  document.getElementById('pay-amount').value = selectedPaymentItem.price;
+  const user = getUser();
+  document.getElementById('pay-handled-by').value = user?.name || 'You';
+  document.getElementById('pay-note').value = '';
+
+  openModal('payment-modal');
+}
+
+function renderPayments() {
+  const tbody = document.getElementById('payments-tbody');
+  if (!allPayments.length) {
+    tbody.innerHTML = `<tr><td colspan="7"><div class="empty-state" style="padding:30px"><p>No payment entries registered.</p></div></td></tr>`;
+    return;
+  }
+  tbody.innerHTML = allPayments.map(p => {
+    const item = p.session
+      ? `Session #${p.session}`
+      : p.product
+        ? `Product #${p.product}`
+        : '—';
+    return `<tr>
+      <td style="color:var(--text-muted);font-size:12px">${p.id}</td>
+      <td style="font-weight:600">${p.enrollment || '—'}</td>
+      <td>${item}</td>
+      <td style="font-weight:700;color:var(--primary)">${p.amount} EGP</td>
+      <td>${formatDateTime(p.paid_at)}</td>
+      <td>${p.handled_by || '—'}</td>
+      <td><button class="btn btn-danger btn-sm btn-del-pay" data-id="${p.id}">Delete</button></td>
+    </tr>`;
+  }).join('');
+  tbody.querySelectorAll('.btn-del-pay').forEach(b => b.addEventListener('click', () => deletePayment(parseInt(b.dataset.id))));
+}
+
+async function deleteProduct(id) {
+  if (!confirmAction('Delete this product?')) return;
+  const { ok, message } = await api.delete(`/api/finance/products/${id}/`);
+  if (ok) { showToast('Product deleted', 'success'); loadAll(); }
+  else showToast(message || 'Failed to delete product', 'error');
+}
+
+async function deletePayment(id) {
+  if (!confirmAction('Delete this payment log entry?')) return;
+  const { ok, message } = await api.delete(`/api/finance/payments/${id}/`);
+  if (ok) { showToast('Payment entry deleted', 'success'); loadAll(); }
+  else showToast(message || 'Failed to delete payment entry', 'error');
+}
+
+document.getElementById('btn-save-payment').addEventListener('click', async () => {
+  if (!selectedPaymentItem) { showToast('No item selected for payment', 'warning'); return; }
+
+  const btn = document.getElementById('btn-save-payment');
+  const studentPhone = document.getElementById('pay-student-phone').value.trim();
+  const amount = document.getElementById('pay-amount').value;
+  const note = document.getElementById('pay-note').value.trim();
+
+  if (!studentPhone || !amount) {
+    showToast('Student phone and amount are required', 'warning');
+    return;
+  }
+
+  const body = {
+    student_phone: studentPhone,
+    amount: parseFloat(amount),
+    note: note,
+  };
+  if (selectedPaymentItem.type === 'session') {
+    body.session = selectedPaymentItem.id;
+  } else {
+    body.product = selectedPaymentItem.id;
+  }
+
+  setSubmitting(btn, true);
+  try {
+    const { ok, data, networkError, message } = await api.post('/api/finance/payments/', body);
+    if (networkError) showToast(message, 'error');
+    else if (!ok) showToast(message || formatApiError(data), 'error');
+    else {
+      showToast('Payment recorded successfully', 'success');
+      closeModal('payment-modal');
+      selectedPaymentItem = null;
+      loadAll();
+    }
+  } catch (err) { showToast(err.message || 'Network error', 'error'); }
+  setSubmitting(btn, false);
+});
+
+document.getElementById('btn-add-product').addEventListener('click', () => {
+  document.getElementById('prod-name').value = '';
+  document.getElementById('prod-price').value = '';
+  document.getElementById('prod-desc').value = '';
+  openModal('product-modal');
+});
+
+document.getElementById('btn-save-product').addEventListener('click', async () => {
+  const btn = document.getElementById('btn-save-product');
+  const name = document.getElementById('prod-name').value.trim();
+  const price = document.getElementById('prod-price').value;
+  const type = document.getElementById('prod-type').value;
+  const description = document.getElementById('prod-desc').value.trim();
+
+  if (!name || !price || !type) {
+    showToast('Name, price and type are required', 'warning');
+    return;
+  }
+
+  const body = { name, price: parseFloat(price), type, description };
+
+  setSubmitting(btn, true);
+  try {
+    const { ok, data, networkError, message } = await api.post('/api/finance/products/', body);
+    if (networkError) showToast(message, 'error');
+    else if (!ok) showToast(message || formatApiError(data), 'error');
+    else {
+      showToast('Material created successfully', 'success');
+      closeModal('product-modal');
+      loadAll();
+    }
+  } catch (err) { showToast(err.message || 'Network error', 'error'); }
+  setSubmitting(btn, false);
+});
+
+loadAll();
+</script>
+<script src="js/navbar.js?v=1"></script>
+</body>
+</html>

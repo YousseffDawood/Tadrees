@@ -1,0 +1,18 @@
+SUGGESTED ADDITIONAL PAGES / FEATURE IMPROVEMENTS FOR TADREES
+
+The current frontend implementation covers all 12 core layouts mapped directly to the Django backend. The following additional views and modules are recommended for future iterations to enhance usability and feature coverage:
+
+1. Student Dashboard & Academic Report Cards:
+   - A dedicated portal for student logins to check their registered courses, current attendance percentage, upcoming schedule, and financial receipts.
+
+2. Teacher Portal:
+   - Simplified access where instructors can view only their personal schedule, review enrolled students in their classes, check-in student attendance, and submit grades.
+
+3. Interactive Business Analytics Dashboard:
+   - Visual charts (revenue, registration growth, room occupancy rates, and teacher workload stats) for administrators.
+
+4. Expense Tracker:
+   - Log center expenditures (rent, utilities, teacher salaries, material acquisition) to compare against income from products and student session payments.
+
+5. System Audit Logs:
+   - An admin interface to track staff actions (deletions, payment adjustments, schedule overrides) for transparency.

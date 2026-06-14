@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Schedule – Tadrees</title>
+  <meta name="description" content="Weekly session schedule for Tadrees Education Center"/>
+  <link rel="stylesheet" href="css/style.css?v=2"/>
+  <style>
+    .week-calendar { overflow-x: auto; }
+    .week-table { min-width: 700px; width: 100%; border-collapse: collapse; }
+    .week-table th, .week-table td { border: 1px solid var(--border); vertical-align: top; }
+    .week-table th { background: var(--bg); padding: 10px 8px; text-align: center; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .05em; color: var(--text-muted); }
+    .week-table th.today-col { background: var(--primary-light); color: var(--primary); }
+    .week-table td { padding: 6px; min-height: 80px; width: calc(100% / 8); }
+    .week-event { background: var(--primary-light); border-left: 3px solid var(--primary); border-radius: 5px; padding: 6px 8px; margin-bottom: 4px; font-size: 12px; cursor: pointer; transition: var(--transition); }
+    .week-event:hover { background: var(--primary); color: #fff; }
+    .week-event-title { font-weight: 700; }
+    .week-event-sub { color: var(--text-muted); font-size: 11px; }
+    .week-event:hover .week-event-sub { color: rgba(255,255,255,.8); }
+  </style>
+</head>
+<body>
+<div class="app-shell">
+  <button class="hamburger" id="hamburger" aria-label="Open menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
+  <div class="sidebar-overlay" id="sidebar-overlay"></div>
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-logo"><img src="wallpapers/CENTER_LOGO.png" alt="Logo" onerror="this.style.display='none'"/><div><span class="sidebar-logo-text">Tadrees</span><span class="sidebar-logo-sub">Management</span></div></div>
+    <nav class="sidebar-nav">
+      <div class="nav-section"><div class="nav-section-label">Main</div><a href="index.html" class="nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>Home</a><a href="center.html" class="nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>About Center</a></div>
+      <div class="nav-section"><div class="nav-section-label">People</div><a href="teachers.html" class="nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>Teachers</a><a href="students.html" class="nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>Students</a></div>
+      <div class="nav-section"><div class="nav-section-label">Academics</div><a href="subjects.html" class="nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg>Subjects</a><a href="subject-teachers.html" class="nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>Subject Teachers</a><a href="schedule.html" class="nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>Schedule</a><a href="special-schedule.html" class="nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>Special Sessions</a></div>
+      <div class="nav-section"><div class="nav-section-label">Finance</div><a href="products.html" class="nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>Payments</a></div>
+      <div class="nav-section nav-admin-only" style="display:none"><div class="nav-section-label">Admin</div><a href="admin-dashboard.html" class="nav-item nav-admin-only" style="display:none"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg>Dashboard</a><a href="add-staff.html" class="nav-item nav-admin-only" style="display:none"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 00-4-4H6a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><line x1="19" y1="8" x2="19" y2="14"/><line x1="22" y1="11" x2="16" y2="11"/></svg>Add Staff</a></div>
+    </nav>
+    <div class="sidebar-footer"><div class="sidebar-user"><div class="sidebar-user-avatar" id="sidebar-avatar">U</div><div><div class="sidebar-user-name" id="sidebar-username">Loading...</div><div class="sidebar-user-role" id="sidebar-role"></div></div></div><button class="btn-logout" id="btn-logout"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4M16 17l5-5-5-5M21 12H9"/></svg>Sign Out</button></div>
+  </aside>
+
+  <main class="main-content">
+    <div class="page-banner">
+      <img class="page-banner-img" id="banner-img" src="" alt=""/>
+      <div class="page-banner-content"><h1>Schedule</h1><p>Weekly session calendar by teacher</p></div>
+    </div>
+    <div class="page-body">
+      <div class="page-header">
+        <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;">
+          <div class="form-group" style="margin:0">
+            <select class="form-control" id="teacher-filter" style="min-width:200px">
+              <option value="">All Teachers</option>
+            </select>
+          </div>
+        </div>
+        <button class="btn btn-primary" id="btn-add-schedule"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>Add Schedule</button>
+      </div>
+
+      <div class="card">
+        <div class="card-body" style="padding:0">
+          <div class="week-calendar">
+            <table class="week-table">
+              <thead id="cal-head"></thead>
+              <tbody id="cal-body"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <div style="margin-top:24px">
+        <div class="section-title">All Schedules</div>
+        <div class="card"><div class="card-body" style="padding:0"><div class="table-wrap"><table>
+          <thead><tr><th>ID</th><th>Subject</th><th>Teacher</th><th>Room</th><th>Day</th><th>Start Time</th><th>Duration</th><th>Actions</th></tr></thead>
+          <tbody id="schedule-tbody"><tr><td colspan="8"><div class="loading-center"><div class="spinner"></div></div></td></tr></tbody>
+        </table></div></div></div>
+      </div>
+    </div>
+  </main>
+</div>
+
+<!-- Add Schedule Modal -->
+<div class="modal-backdrop" id="add-schedule-modal">
+  <div class="modal">
+    <div class="modal-header"><h3>Add Schedule</h3><button class="modal-close"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button></div>
+    <div class="modal-body">
+      <div class="form-group"><label class="form-label">Subject <span>*</span></label><select class="form-control" id="sch-subject"><option value="">Select subject...</option></select></div>
+      <div class="form-row">
+        <div class="form-group"><label class="form-label">Teacher</label><select class="form-control" id="sch-teacher"><option value="">Select teacher...</option></select></div>
+        <div class="form-group"><label class="form-label">Room <span>*</span></label><select class="form-control" id="sch-room"><option value="">Select room...</option></select></div>
+      </div>
+      <div class="form-row">
+        <div class="form-group"><label class="form-label">Start Date <span>*</span></label><input class="form-control" type="date" id="sch-date"/></div>
+        <div class="form-group"><label class="form-label">Start Time <span>*</span></label><input class="form-control" type="time" id="sch-time"/></div>
+      </div>
+      <div class="form-group"><label class="form-label">Duration (minutes) <span>*</span></label><input class="form-control" type="number" id="sch-duration" min="15" step="15" placeholder="e.g. 60"/></div>
+    </div>
+    <div class="modal-footer"><button class="btn btn-secondary modal-close">Cancel</button><button class="btn btn-primary" id="btn-save-schedule">Save Schedule</button></div>
+  </div>
+</div>
+
+<script src="js/config.js"></script>
+<script src="js/utils.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/api.js"></script>
+<script src="js/router.js?v=2"></script>
+<script>
+(function(){const img=document.getElementById('banner-img');const exts=['jpg','jpeg','png','webp'];let i=0;img.onerror=()=>{if(++i<exts.length)img.src=`wallpapers/schedule.${exts[i]}`;};img.src=`wallpapers/schedule.${exts[0]}`;})();
+
+const DAYS = ['MONDAY','TUESDAY','WEDNESDAY','THURSDAY','FRIDAY','SATURDAY','SUNDAY'];
+const DAY_SHORT = ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'];
+const todayDay = DAYS[new Date().getDay() === 0 ? 6 : new Date().getDay() - 1];
+
+let allSchedules = [], allTeachers = [], allSubjects = [], allRooms = [];
+
+async function loadAll() {
+  try {
+    const [schR, tR, subR, rR] = await Promise.all([
+      api.get('/api/academics/schedules/'),
+      api.get('/api/users/teachers/'),
+      api.get('/api/academics/subjects/'),
+      api.get('/api/academics/rooms/'),
+    ]);
+    const failed = [schR, tR, subR, rR].find(r => r.networkError);
+    if (failed) throw new Error(failed.message);
+    allSchedules = schR.ok ? schR.data : [];
+    allTeachers  = tR.ok  ? tR.data  : [];
+    allSubjects  = subR.ok ? subR.data : [];
+    allRooms     = rR.ok  ? rR.data  : [];
+    populateFilters();
+    renderCalendar(allSchedules);
+    renderTable(allSchedules);
+  } catch (err) { showToast(err.message || 'Failed to load schedule data', 'error'); }
+}
+
+function populateFilters() {
+  const tf = document.getElementById('teacher-filter');
+  allTeachers.forEach(t => { const o = document.createElement('option'); o.value = t.id; o.textContent = t.name||t.phone||'?'; tf.appendChild(o); });
+
+  const ss = document.getElementById('sch-subject');
+  allSubjects.forEach(s => { const o = document.createElement('option'); o.value = s.id; o.textContent = s.name; ss.appendChild(o); });
+
+  const st = document.getElementById('sch-teacher');
+  allTeachers.forEach(t => { const o = document.createElement('option'); o.value = t.id; o.textContent = t.name||t.phone||'?'; st.appendChild(o); });
+
+  const sr = document.getElementById('sch-room');
+  allRooms.forEach(r => { const o = document.createElement('option'); o.value = r.id; o.textContent = `${r.name} (cap: ${r.capacity})`; sr.appendChild(o); });
+}
+
+function renderCalendar(data) {
+  // Build head
+  const head = document.getElementById('cal-head');
+  head.innerHTML = `<tr><th style="min-width:0;width:auto;padding:10px 4px;"></th>${DAY_SHORT.map((d,i)=>`<th class="${DAYS[i]===todayDay?'today-col':''}">${d}${DAYS[i]===todayDay?' ★':''}</th>`).join('')}</tr>`;
+
+  // Group schedules by day
+  const byDay = {};
+  DAYS.forEach(d => byDay[d] = []);
+  data.forEach(s => {
+    const day = (s.day||'').toUpperCase();
+    if (byDay[day]) byDay[day].push(s);
+  });
+
+  const maxRows = Math.max(1, ...DAYS.map(d => byDay[d].length));
+  let rows = '';
+  for (let r = 0; r < maxRows; r++) {
+    rows += `<tr>${DAYS.map(d => {
+      const s = byDay[d][r];
+      if (!s) return `<td class="${d===todayDay?'today-col':''}"></td>`;
+      const sub = allSubjects.find(x => x.id === (s.subject?.id || s.subject));
+      const teacher = allTeachers.find(x => x.id === (s.teacher?.id || s.teacher));
+      return `<td class="${d===todayDay?'today-col':''}">
+        <div class="week-event fade-in-up">
+          <div class="week-event-title">${sub?.name || 'Subject'}</div>
+          <div class="week-event-sub">${formatTime(s.time_start)} · ${s.duration_in_minutes}min</div>
+          <div class="week-event-sub">${teacher?.name || ''}</div>
+        </div>
+      </td>`;
+    }).join('')}</tr>`;
+  }
+  document.getElementById('cal-body').innerHTML = rows;
+}
+
+function renderTable(data) {
+  const tbody = document.getElementById('schedule-tbody');
+  if (!data.length) { tbody.innerHTML = `<tr><td colspan="8"><div class="empty-state" style="padding:30px"><p>No schedules yet.</p></div></td></tr>`; return; }
+  tbody.innerHTML = data.map((s, i) => {
+    const sub = allSubjects.find(x => x.id === (s.subject?.id || s.subject));
+    const teacher = allTeachers.find(x => x.id === (s.teacher?.id || s.teacher));
+    const room = allRooms.find(x => x.id === (s.room?.id || s.room));
+    return `<tr class="fade-in-up delay-${(i % 4) + 1}">
+      <td style="color:var(--text-muted);font-size:12px">${s.id}</td>
+      <td style="font-weight:600">${sub?.name || s.subject || '—'}</td>
+      <td>${teacher?.name || '—'}</td>
+      <td>${room?.name || '—'}</td>
+      <td><span class="badge ${s.day===todayDay?'badge-blue':'badge-gray'}">${s.day||'—'}</span></td>
+      <td>${formatTime(s.time_start)}</td>
+      <td>${s.duration_in_minutes} min</td>
+      <td><div class="table-actions">
+        <button class="btn btn-danger btn-sm btn-del-sch" data-id="${s.id}">Delete</button>
+      </div></td>
+    </tr>`;
+  }).join('');
+  tbody.querySelectorAll('.btn-del-sch').forEach(b => b.addEventListener('click', () => deleteSch(parseInt(b.dataset.id))));
+}
+
+async function deleteSch(id) {
+  if (!confirmAction('Delete this schedule?')) return;
+  const { ok, message } = await api.delete(`/api/academics/schedules/${id}/`);
+  if (ok) { showToast('Schedule deleted', 'success'); loadAll(); }
+  else showToast(message || 'Failed to delete', 'error');
+}
+
+document.getElementById('teacher-filter').addEventListener('change', e => {
+  const tid = parseInt(e.target.value);
+  const filtered = tid ? allSchedules.filter(s => (s.teacher?.id || s.teacher) === tid) : allSchedules;
+  renderCalendar(filtered);
+  renderTable(filtered);
+});
+
+document.getElementById('btn-add-schedule').addEventListener('click', () => {
+  document.getElementById('sch-date').value = todayISO();
+  openModal('add-schedule-modal');
+});
+
+document.getElementById('btn-save-schedule').addEventListener('click', async () => {
+  const btn = document.getElementById('btn-save-schedule');
+  const subject  = document.getElementById('sch-subject').value;
+  const teacher  = document.getElementById('sch-teacher').value;
+  const room     = document.getElementById('sch-room').value;
+  const date     = document.getElementById('sch-date').value;
+  const time     = document.getElementById('sch-time').value;
+  const duration = document.getElementById('sch-duration').value;
+  if (!subject || !room || !date || !time || !duration) { showToast('All required fields must be filled', 'warning'); return; }
+  const body = { subject: parseInt(subject), room: parseInt(room), start_date: date, time_start: time, duration_in_minutes: parseInt(duration) };
+  if (teacher) body.teacher = parseInt(teacher);
+  setSubmitting(btn, true);
+  try {
+    const { ok, data, networkError, message } = await api.post('/api/academics/schedules/', body);
+    if (networkError) showToast(message, 'error');
+    else if (!ok) showToast(message || formatApiError(data), 'error');
+    else { showToast('Schedule added!', 'success'); closeModal('add-schedule-modal'); loadAll(); }
+  } catch (err) { showToast(err.message || 'Network error', 'error'); }
+  setSubmitting(btn, false);
+});
+
+loadAll();
+</script>
+<script src="js/navbar.js?v=1"></script>
+</body>
+</html>

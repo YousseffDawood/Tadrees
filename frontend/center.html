@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About Center & Announcements – Tadrees</title>
+  <meta name="description" content="View center information and official announcements" />
+  <link rel="stylesheet" href="css/style.css?v=2" />
+  <style>
+    .center-grid {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 24px;
+    }
+
+    @media (max-width: 992px) {
+      .center-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .announcement-card {
+      background: var(--card);
+      border-radius: var(--radius-md);
+      padding: 20px;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid var(--border);
+      margin-bottom: 16px;
+      position: relative;
+    }
+
+    .announcement-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 8px;
+    }
+
+    .announcement-title {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--text);
+      margin: 0;
+    }
+
+    .announcement-meta {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-top: 4px;
+    }
+
+    .announcement-body {
+      font-size: 14px;
+      color: var(--text);
+      line-height: 1.6;
+      white-space: pre-line;
+    }
+
+    .center-info-list {
+      margin-top: 16px;
+    }
+
+    .center-info-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 14px;
+      color: var(--text);
+      margin-bottom: 12px;
+    }
+
+    .center-info-icon {
+      width: 18px;
+      height: 18px;
+      color: var(--primary);
+    }
+  </style>
+</head>
+
+<body>
+  <div class="app-shell">
+    <button class="hamburger" id="hamburger" aria-label="Open menu"><svg viewBox="0 0 24 24" fill="none"
+        stroke="currentColor" stroke-width="2">
+        <line x1="3" y1="6" x2="21" y2="6" />
+        <line x1="3" y1="12" x2="21" y2="12" />
+        <line x1="3" y1="18" x2="21" y2="18" />
+      </svg></button>
+    <div class="sidebar-overlay" id="sidebar-overlay"></div>
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-logo"><img src="wallpapers/CENTER_LOGO.png" alt="Logo" onerror="this.style.display='none'" />
+        <div><span class="sidebar-logo-text">Tadrees</span><span class="sidebar-logo-sub">Management</span></div>
+      </div>
+      <nav class="sidebar-nav">
+        <div class="nav-section">
+          <div class="nav-section-label">Main</div><a href="index.html" class="nav-item"><svg viewBox="0 0 24 24"
+              fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="3" y="3" width="7" height="7" rx="1" />
+              <rect x="14" y="3" width="7" height="7" rx="1" />
+              <rect x="3" y="14" width="7" height="7" rx="1" />
+              <rect x="14" y="14" width="7" height="7" rx="1" />
+            </svg>Home</a><a href="center.html" class="nav-item"><svg viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2">
+              <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z" />
+              <polyline points="9 22 9 12 15 12 15 22" />
+            </svg>About Center</a>
+        </div>
+        <div class="nav-section">
+          <div class="nav-section-label">People</div><a href="teachers.html" class="nav-item"><svg viewBox="0 0 24 24"
+              fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2" />
+              <circle cx="9" cy="7" r="4" />
+              <path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75" />
+            </svg>Teachers</a><a href="students.html" class="nav-item"><svg viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2">
+              <path d="M22 10v6M2 10l10-5 10 5-10 5z" />
+              <path d="M6 12v5c3 3 9 3 12 0v-5" />
+            </svg>Students</a>
+        </div>
+        <div class="nav-section">
+          <div class="nav-section-label">Academics</div><a href="subjects.html" class="nav-item"><svg
+              viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M4 19.5A2.5 2.5 0 016.5 17H20" />
+              <path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z" />
+            </svg>Subjects</a><a href="subject-teachers.html" class="nav-item"><svg viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10" />
+              <path d="M12 8v4l3 3" />
+            </svg>Subject Teachers</a><a href="schedule.html" class="nav-item"><svg viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2">
+              <rect x="3" y="4" width="18" height="18" rx="2" />
+              <line x1="16" y1="2" x2="16" y2="6" />
+              <line x1="8" y1="2" x2="8" y2="6" />
+              <line x1="3" y1="10" x2="21" y2="10" />
+            </svg>Schedule</a><a href="special-schedule.html" class="nav-item"><svg viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2">
+              <polygon
+                points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+            </svg>Special Sessions</a>
+        </div>
+        <div class="nav-section">
+          <div class="nav-section-label">Finance</div><a href="products.html" class="nav-item"><svg viewBox="0 0 24 24"
+              fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="1" y="4" width="22" height="16" rx="2" />
+              <line x1="1" y1="10" x2="23" y2="10" />
+            </svg>Payments</a>
+        </div>
+        <div class="nav-section nav-admin-only" style="display:none">
+            <div class="nav-section-label">Admin</div><a href="admin-dashboard.html" class="nav-item nav-admin-only"
+            style="display:none"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="3" y="3" width="18" height="18" rx="2" />
+              <path d="M3 9h18" />
+              <path d="M9 21V9" />
+            </svg>Dashboard</a><a href="add-staff.html" class="nav-item nav-admin-only"
+            style="display:none"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M16 21v-2a4 4 0 00-4-4H6a4 4 0 00-4 4v2" />
+              <circle cx="9" cy="7" r="4" />
+              <line x1="19" y1="8" x2="19" y2="14" />
+              <line x1="22" y1="11" x2="16" y2="11" />
+            </svg>Add Staff</a>
+        </div>
+      </nav>
+      <div class="sidebar-footer">
+        <div class="sidebar-user">
+          <div class="sidebar-user-avatar" id="sidebar-avatar">U</div>
+          <div>
+            <div class="sidebar-user-name" id="sidebar-username">Loading...</div>
+            <div class="sidebar-user-role" id="sidebar-role"></div>
+          </div>
+        </div><button class="btn-logout" id="btn-logout"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2">
+            <path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4M16 17l5-5-5-5M21 12H9" />
+          </svg>Sign Out</button>
+      </div>
+    </aside>
+
+    <main class="main-content">
+      <div class="page-banner fade-in-up">
+        <img class="page-banner-img" id="banner-img" src="" alt="" />
+        <div class="page-banner-content">
+          <h1>About Center</h1>
+          <p>General information and announcements center</p>
+        </div>
+      </div>
+      <div class="page-body">
+        <div class="center-grid">
+          <!-- Left: Center Info Card -->
+          <div class="fade-in-up delay-1">
+            <div class="section-title">Center Details</div>
+            <div class="card">
+              <div class="card-body" id="center-details-container">
+                <div class="loading-center">
+                  <div class="spinner"></div><span>Loading info...</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right: Announcements Section -->
+          <div class="fade-in-up delay-2">
+            <div class="page-header" style="margin-bottom: 16px;">
+              <div class="section-title" style="margin:0">Announcements</div>
+              <button class="btn btn-primary" id="btn-new-announcement"><svg viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2.5">
+                  <line x1="12" y1="5" x2="12" y2="19" />
+                  <line x1="5" y1="12" x2="19" y2="12" />
+                </svg>New Announcement</button>
+            </div>
+            <div id="announcements-container">
+              <div class="loading-center">
+                <div class="spinner"></div><span>Loading announcements...</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- Create Announcement Modal -->
+  <div class="modal-backdrop" id="announcement-modal">
+    <div class="modal">
+      <div class="modal-header">
+        <h3>New Announcement</h3><button class="modal-close"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2">
+            <line x1="18" y1="6" x2="6" y2="18" />
+            <line x1="6" y1="6" x2="18" y2="18" />
+          </svg></button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label class="form-label">Title <span>*</span></label>
+          <input class="form-control" id="ann-title" placeholder="Announcement title..." />
+        </div>
+        <div class="form-group">
+          <label class="form-label">Target Role <span>*</span></label>
+          <select class="form-control" id="ann-target">
+            <option value="all">All Roles</option>
+            <option value="students_only">Students Only</option>
+            <option value="teachers_only">Teachers Only</option>
+            <option value="staff_only">Staff Only</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Message Body <span>*</span></label>
+          <textarea class="form-control" id="ann-body" style="height: 120px;"
+            placeholder="Write your message here..."></textarea>
+        </div>
+      </div>
+      <div class="modal-footer"><button class="btn btn-secondary modal-close">Cancel</button><button
+          class="btn btn-primary" id="btn-save-announcement">Publish</button></div>
+    </div>
+  </div>
+
+  <script src="js/config.js"></script>
+  <script src="js/utils.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/router.js?v=2"></script>
+  <script>
+    (function () { const img = document.getElementById('banner-img'); const exts = ['jpg', 'jpeg', 'png', 'webp']; let i = 0; img.onerror = () => { if (++i < exts.length) img.src = `wallpapers/center.${exts[i]}`; }; img.src = `wallpapers/center.${exts[0]}`; })();
+
+    async function loadCenterInfo() {
+      const container = document.getElementById('center-details-container');
+      try {
+        const { ok, data, networkError, message } = await api.get('/api/center/center-info/');
+        if (ok && data?.length) {
+          const center = data[0];
+          if (center) {
+            let logoHtml = '';
+            if (center.logo) {
+              logoHtml = `<div style="text-align:center;margin-bottom:16px;"><img src="${center.logo}" alt="Center Logo" style="max-height:80px;border-radius:var(--radius-sm);"/></div>`;
+            }
+            container.innerHTML = `
+          ${logoHtml}
+          <h3 style="margin-top:0;font-size:18px;font-weight:700;color:var(--text);">${center.center_name || 'Education Center'}</h3>
+          <p style="font-size:14px;color:var(--text-muted);line-height:1.6;">${center.description || 'No description available.'}</p>
+          <div class="center-info-list">
+            <div class="center-info-item">
+              <svg class="center-info-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              <span>${center.contact || 'No contact number'}</span>
+            </div>
+            <div class="center-info-item">
+              <svg class="center-info-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              <span>No location set</span>
+            </div>
+          </div>
+        `;
+            return;
+          }
+        }
+        container.innerHTML = `<p style="color:var(--text-muted);font-size:14px;">${networkError ? message : 'No center information registered.'}</p>`;
+      } catch (err) {
+        container.innerHTML = `<p style="color:var(--text-muted);font-size:14px;">${err.message || 'Failed to load center details.'}</p>`;
+      }
+    }
+
+    async function loadAnnouncements() {
+      const container = document.getElementById('announcements-container');
+      try {
+        const { ok, data, networkError, message } = await api.get('/api/center/announcements/');
+        if (networkError) {
+          renderError(container, message);
+        } else if (ok) {
+          renderAnnouncements(data, container);
+        } else {
+          renderError(container, message || 'Failed to fetch announcements.');
+        }
+      } catch (err) {
+        renderError(container, err.message || 'Failed to fetch announcements.');
+      }
+    }
+
+    function renderAnnouncements(data, container) {
+      if (!data.length) {
+        container.innerHTML = `
+      <div class="empty-state" style="padding:40px 20px;">
+        <div class="empty-state-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+        </div>
+        <h3>No announcements</h3>
+        <p>Official notices and announcements will appear here.</p>
+      </div>`;
+        return;
+      }
+      container.innerHTML = data.map(ann => {
+        let badgeClass = 'badge-gray';
+        if (ann.target === 'staff_only') badgeClass = 'badge-red';
+        if (ann.target === 'teachers_only') badgeClass = 'badge-blue';
+        if (ann.target === 'students_only') badgeClass = 'badge-green';
+
+        const canDelete = (typeof isStaff === 'function') ? isStaff() : false;
+
+        return `
+      <div class="announcement-card">
+        <div class="announcement-header">
+          <div>
+            <h3 class="announcement-title">${ann.title}</h3>
+            <div class="announcement-meta">Posted on ${formatDateTime(ann.created_at)}</div>
+          </div>
+          <div style="display:flex;align-items:center;gap:10px;">
+            <span class="badge ${badgeClass}">${ann.target}</span>
+            ${canDelete ? `<button class="btn btn-ghost btn-danger" onclick="deleteAnnouncement(${ann.id})" title="Delete announcement" style="height:32px;padding:6px 8px;border-radius:6px;">\n                <svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" style=\"width:16px;height:16px\">\n                  <path d=\"M3 6h18\" />\n                  <path d=\"M8 6v14a2 2 0 002 2h4a2 2 0 002-2V6\" />\n                  <path d=\"M10 11v6\" />\n                  <path d=\"M14 11v6\" />\n                  <path d=\"M9 6V4a1 1 0 011-1h4a1 1 0 011 1v2\" />\n                </svg>
+              </button>` : ''}
+          </div>
+        </div>
+        <div class="announcement-body">${ann.content}</div>
+      </div>
+    `;
+      }).join('');
+    }
+
+    async function deleteAnnouncement(id) {
+      if (!id) return;
+      if (!confirmAction('Delete this announcement? This action cannot be undone.')) return;
+      try {
+        const { ok, message, networkError } = await api.delete(`/api/center/announcements/${id}/`);
+        if (networkError) {
+          showToast(message || 'Network error', 'error');
+          return;
+        }
+        if (!ok) {
+          showToast(message || 'Failed to delete announcement', 'error');
+          return;
+        }
+        showToast('Announcement deleted', 'success');
+        loadAnnouncements();
+      } catch (err) {
+        showToast(err.message || 'Failed to delete announcement', 'error');
+      }
+    }
+
+    document.getElementById('btn-new-announcement').addEventListener('click', () => {
+      document.getElementById('ann-title').value = '';
+      document.getElementById('ann-body').value = '';
+      document.getElementById('ann-target').value = 'all';
+      openModal('announcement-modal');
+    });
+
+    document.getElementById('btn-save-announcement').addEventListener('click', async () => {
+      const btn = document.getElementById('btn-save-announcement');
+      const title = document.getElementById('ann-title').value.trim();
+      const bodyText = document.getElementById('ann-body').value.trim();
+      const target = document.getElementById('ann-target').value;
+
+      if (!title || !bodyText) {
+        showToast('Title and body are required', 'warning');
+        return;
+      }
+
+      const payload = {
+        title,
+        content: bodyText,
+        target
+      };
+
+      setSubmitting(btn, true);
+      try {
+        const { ok, data, networkError, message } = await api.post('/api/center/announcements/', payload);
+        if (networkError) showToast(message, 'error');
+        else if (!ok) showToast(message || formatApiError(data), 'error');
+        else {
+          showToast('Announcement published!', 'success');
+          closeModal('announcement-modal');
+          loadAnnouncements();
+        }
+      } catch (err) { showToast(err.message || 'Network error', 'error'); }
+      setSubmitting(btn, false);
+    });
+
+    loadCenterInfo();
+    loadAnnouncements();
+  </script>
+  <script src="js/navbar.js?v=1"></script>
+</body>
+
+</html>
