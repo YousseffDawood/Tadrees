@@ -230,7 +230,17 @@ yarab/
 
 <!-- Add screenshots or demo video here -->
 ![Screenshot](./screenshots/screenshot1.png)
-[![Demo Video](./screenshots/thumbnail.png)](https://your-video-link.com)
+<img width="1918" height="946" alt="home page" src="https://github.com/user-attachments/assets/8a39a49a-baeb-4dac-93d1-8eaaeda76562" />
+<img width="1917" height="946" alt="announcment" src="https://github.com/user-attachments/assets/06ea930e-b9b6-4764-a92b-7030db3be71c" />
+<img width="1912" height="945" alt="Teacher_details" src="https://github.com/user-attachments/assets/600031ab-122d-4ed9-ab82-114f2f993213" />
+<img width="1917" height="948" alt="student _add" src="https://github.com/user-attachments/assets/e7b82010-21a7-4739-a1cf-45720fa98e90" />
+<img width="1919" height="948" alt="subject_details" src="https://github.com/user-attachments/assets/f9f80690-a25c-45df-8f9d-ee962dc1556a" />
+<img width="1917" height="945" alt="teacher_subject" src="https://github.com/user-attachments/assets/4b94594a-2426-4767-a021-35fde9cdbb90" />
+<img width="1919" height="946" alt="schedule" src="https://github.com/user-attachments/assets/76915bb6-ce7a-4bba-b798-d73bae1b46e4" />
+<img width="1915" height="944" alt="special schedules" src="https://github.com/user-attachments/assets/a6779187-c872-428f-8ec8-89fcba3db430" />
+<img width="1915" height="947" alt="payment" src="https://github.com/user-attachments/assets/f938ddbb-709c-44f8-a29e-34c54d9eb3f9" />
+<img width="1916" height="948" alt="Login" src="https://github.com/user-attachments/assets/50caa8d7-4090-42cf-9b0d-c641649a8ffc" />
+
 
 ---
 
